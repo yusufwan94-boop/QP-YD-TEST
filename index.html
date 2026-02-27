@@ -36,7 +36,7 @@
                 <button onclick="switchTab('photo')" id="btn-photo" class="text-[10px] md:text-xs font-bold uppercase tracking-widest py-2 tab-active">Photoelectric</button>
                 <button onclick="switchTab('duality')" id="btn-duality" class="text-[10px] md:text-xs font-bold uppercase tracking-widest py-2 tab-inactive">Duality</button>
             </div>
-            <span class="hidden md:inline bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-[10px] font-bold border border-blue-500/30">MRSM GERIK</span>
+            <span class="hidden md:inline bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-[10px] font-bold border border-blue-500/30 uppercase">MRSM Gerik Official</span>
         </div>
     </nav>
 
@@ -54,26 +54,26 @@
                 </div>
                 <div class="metal-surface" id="photo-arena"><div class="barrier-line"></div></div>
                 <div class="grid grid-cols-4 gap-2">
-                    <button onclick="setPhotoColor(40, '#ef4444')" class="py-2 rounded-lg bg-red-600/20 border border-red-600/50 hover:bg-red-600 text-xs font-bold">RED</button>
-                    <button onclick="setPhotoColor(65, '#22c55e')" class="py-2 rounded-lg bg-green-600/20 border border-green-600/50 hover:bg-green-600 text-xs font-bold">GREEN</button>
-                    <button onclick="setPhotoColor(95, '#3b82f6')" class="py-2 rounded-lg bg-blue-600/20 border border-blue-600/50 hover:bg-blue-600 text-xs font-bold">BLUE</button>
-                    <button onclick="setPhotoColor(135, '#a855f7')" class="py-2 rounded-lg bg-purple-600/20 border border-purple-600/50 hover:bg-purple-600 text-xs font-bold">UV</button>
+                    <button onclick="setPhotoColor(4.6, '#ef4444')" class="py-2 rounded-lg bg-red-600/20 border border-red-600/50 hover:bg-red-600 text-[10px] font-bold">RED (4.6)</button>
+                    <button onclick="setPhotoColor(5.5, '#22c55e')" class="py-2 rounded-lg bg-green-600/20 border border-green-600/50 hover:bg-green-600 text-[10px] font-bold">GREEN (5.5)</button>
+                    <button onclick="setPhotoColor(6.7, '#3b82f6')" class="py-2 rounded-lg bg-blue-600/20 border border-blue-600/50 hover:bg-blue-600 text-[10px] font-bold">BLUE (6.7)</button>
+                    <button onclick="setPhotoColor(12.0, '#a855f7')" class="py-2 rounded-lg bg-purple-600/20 border border-purple-600/50 hover:bg-purple-600 text-[10px] font-bold">UV (12.0)</button>
                 </div>
                 <div class="grid grid-cols-3 gap-2">
                     <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
-                        <label class="block text-[10px] font-black text-blue-400 uppercase mb-2">Freq (f)</label>
-                        <input type="range" id="fIn" min="0" max="150" value="45" class="w-full" oninput="updatePhoto()">
-                        <div id="fOut" class="text-xl font-black mt-1">45</div>
+                        <label class="block text-[10px] font-black text-blue-400 uppercase mb-2">Freq (10^14 Hz)</label>
+                        <input type="range" id="fIn" min="0" max="20" step="0.1" value="5.5" class="w-full" oninput="updatePhoto()">
+                        <div id="fOut" class="text-xl font-black mt-1">5.5</div>
                     </div>
                     <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
-                        <label class="block text-[10px] font-black text-amber-400 uppercase mb-2">Intensity</label>
+                        <label class="block text-[10px] font-black text-amber-400 uppercase mb-2">Int (W/m^2)</label>
                         <input type="range" id="iIn" min="1" max="15" value="5" class="w-full" oninput="updatePhoto()">
                         <div id="iOut" class="text-xl font-black mt-1">5</div>
                     </div>
                     <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
-                        <label class="block text-[10px] font-black text-red-400 uppercase mb-2">Work (Φ)</label>
-                        <input type="range" id="tIn" min="20" max="100" value="70" class="w-full" oninput="updatePhoto()">
-                        <div id="tOut" class="text-xl font-black mt-1">70</div>
+                        <label class="block text-[10px] font-black text-red-400 uppercase mb-2">Work function (eV)</label>
+                        <input type="range" id="tIn" min="1.5" max="5.5" step="0.1" value="2.3" class="w-full" oninput="updatePhoto()">
+                        <div id="tOut" class="text-xl font-black mt-1">2.3</div>
                     </div>
                 </div>
                 <button onclick="firePhotons()" class="w-full bg-blue-600 hover:bg-blue-500 py-5 rounded-2xl font-black text-lg shadow-xl uppercase tracking-widest transition-all">Execute Emission</button>
@@ -95,7 +95,7 @@
                         </div>
                         <div class="flip-card-back">
                             <p class="font-black mb-2">NO.</p>
-                            <p>If $f < f_0$, increasing intensity just hits the metal with more "weak" photons. No energy is accumulated.</p>
+                            <p>If f < fo, increasing intensity just hits the metal with more "weak" photons. Energy is not accumulated over time.</p>
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                         </div>
                         <div class="flip-card-back">
                             <p class="font-black mb-2">FREQUENCY.</p>
-                            <p>Excess energy ($hf - \Phi$) becomes Kinetic Energy. Higher frequency means faster electrons.</p>
+                            <p>Excess energy (hf - W) becomes Kinetic Energy. Higher frequency means faster photoelectrons.</p>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                         </div>
                         <div class="flip-card-back">
                             <p class="font-black mb-2">IMMEDIATE.</p>
-                            <p>Photoelectric effect is instantaneous, supporting the particle theory where 1 photon hits 1 electron.</p>
+                            <p>Emission is instantaneous (< 10^-9 s), proving 1-to-1 particle collision between photon and electron.</p>
                         </div>
                     </div>
                 </div>
@@ -139,19 +139,21 @@
                 <div class="wave-container flex items-center justify-around" id="slit-screen"></div>
                 <div class="grid grid-cols-3 gap-4 bg-slate-800/50 p-4 rounded-xl">
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2">Wavelength (nm)</label>
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2">Wavelength ($\lambda$)</label>
                         <input type="range" id="waveLen" min="400" max="700" value="650" class="w-full" oninput="updateSlit()">
+                        <div id="waveLenOut" class="text-sm font-bold text-cyan-400 mt-1">650 nm</div>
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2">Distance (cm)</label>
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2">Distance ($D$)</label>
                         <input type="range" id="distD" min="1" max="100" value="50" class="w-full" oninput="updateSlit()">
+                        <div id="distDOut" class="text-sm font-bold text-cyan-400 mt-1">50 cm</div>
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2">Slit Width (mm)</label>
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2">Slit Width ($d$)</label>
                         <input type="range" id="slitSep" min="0.1" max="2.0" step="0.1" value="0.5" class="w-full" oninput="updateSlit()">
+                        <div id="slitSepOut" class="text-sm font-bold text-cyan-400 mt-1">0.5 mm</div>
                     </div>
                 </div>
-                <div class="text-xs text-slate-400 italic">Formula: $x = \frac{\lambda D}{d}$</div>
             </div>
 
             <div class="glass p-8 rounded-3xl space-y-6">
@@ -166,47 +168,46 @@
                     <button onclick="fireElectronGun()" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded font-bold text-xs uppercase">Fire Gun</button>
                     <button onclick="clearElectronScreen()" class="border border-slate-600 px-4 py-2 rounded font-bold text-[10px] uppercase">Clear</button>
                 </div>
-                <div class="text-xs text-slate-400 italic">$\lambda = \frac{h}{p}$ | Matter behaves like waves.</div>
             </div>
         </div>
 
-        <section class="grid md:grid-cols-2 gap-8">
+        <section class="grid md:grid-cols-2 gap-8 py-12">
             <div class="space-y-6">
-                <h4 class="text-center font-bold text-slate-500 uppercase">Light Observation Logs</h4>
+                <h4 class="text-center font-bold text-slate-500 uppercase tracking-widest">Light Observation Logs</h4>
                 <div class="grid gap-4">
                     <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
                         <div class="flip-card-inner">
                             <div class="flip-card-front text-center">
-                                <span class="text-cyan-500 text-xs font-bold mb-2">LOG 01: COLOR</span>
-                                <p class="text-sm font-bold">How does color affect fringe width?</p>
+                                <span class="text-cyan-500 text-xs font-bold mb-2">LOG L1: COLOR CHANGE</span>
+                                <p class="text-sm font-bold">How does wavelength affect fringe separation (x)?</p>
                             </div>
                             <div class="flip-card-back">
-                                <p class="font-black mb-2">WAVELENGTH.</p>
-                                <p>Red light (longer $\lambda$) produces wider fringes than blue light (shorter $\lambda$).</p>
+                                <p class="font-black mb-2">DIRECT RELATION.</p>
+                                <p>Longer wavelengths (Red) diffract more than shorter wavelengths (Blue), creating wider gaps between fringes.</p>
                             </div>
                         </div>
                     </div>
                     <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
                         <div class="flip-card-inner">
                             <div class="flip-card-front text-center">
-                                <span class="text-cyan-500 text-xs font-bold mb-2">LOG 02: DISTANCE</span>
-                                <p class="text-sm font-bold">Impact of screen distance (D)?</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <p class="font-black mb-2">MAGNIFICATION.</p>
-                                <p>Increasing distance D allows the wave to spread more, increasing $x$.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front text-center">
-                                <span class="text-cyan-500 text-xs font-bold mb-2">LOG 03: SLIT WIDTH</span>
-                                <p class="text-sm font-bold">What if the slits are closer (small d)?</p>
+                                <span class="text-cyan-500 text-xs font-bold mb-2">LOG L2: SLIT SEPARATION</span>
+                                <p class="text-sm font-bold">Effect of bringing slits closer together (d)?</p>
                             </div>
                             <div class="flip-card-back">
                                 <p class="font-black mb-2">INVERSE RELATION.</p>
-                                <p>The smaller the slit width (d), the wider the resulting interference fringes ($x$).</p>
+                                <p>As d decreases, the fringe width x increases according to x = (wavelength x D) / a.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front text-center">
+                                <span class="text-cyan-500 text-xs font-bold mb-2">LOG L3: WAVE PROOF</span>
+                                <p class="text-sm font-bold">Why does this prove light is a wave?</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <p class="font-black mb-2">INTERFERENCE.</p>
+                                <p>Particles would just create two lines. Alternating bright and dark regions only occur due to wave superposition.</p>
                             </div>
                         </div>
                     </div>
@@ -214,41 +215,41 @@
             </div>
 
             <div class="space-y-6">
-                <h4 class="text-center font-bold text-slate-500 uppercase">Electron Observation Logs</h4>
+                <h4 class="text-center font-bold text-slate-500 uppercase tracking-widest">Electron Observation Logs</h4>
                 <div class="grid gap-4">
                     <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
                         <div class="flip-card-inner">
                             <div class="flip-card-front text-center">
-                                <span class="text-blue-500 text-xs font-bold mb-2">LOG 01: MOMENTUM</span>
-                                <p class="text-sm font-bold">Why use high voltage?</p>
+                                <span class="text-blue-500 text-xs font-bold mb-2">LOG E1: VOLTAGE IMPACT</span>
+                                <p class="text-sm font-bold">What happens when you increase Gun Voltage?</p>
                             </div>
                             <div class="flip-card-back">
-                                <p class="font-black mb-2">VELOCITY.</p>
-                                <p>Higher voltage gives higher velocity/momentum, leading to a shorter De Broglie wavelength.</p>
+                                <p class="font-black mb-2">WAVELENGTH SHORTENS.</p>
+                                <p>Higher Voltage causing Higher Momentum causing Smaller de Broglie wavelength (wavelength = h/p).</p>
                             </div>
                         </div>
                     </div>
                     <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
                         <div class="flip-card-inner">
                             <div class="flip-card-front text-center">
-                                <span class="text-blue-500 text-xs font-bold mb-2">LOG 02: RESOLUTION</span>
-                                <p class="text-sm font-bold">The benefit of smaller wavelengths?</p>
+                                <span class="text-blue-500 text-xs font-bold mb-2">LOG E2: PATTERN DENSITY</span>
+                                <p class="text-sm font-bold">Why do electrons form "rings" or fringes?</p>
                             </div>
                             <div class="flip-card-back">
-                                <p class="font-black mb-2">DETAIL.</p>
-                                <p>Electron microscopes use these tiny wavelengths to see objects much smaller than visible light can resolve.</p>
+                                <p class="font-black mb-2">DIFFRACTION.</p>
+                                <p>Electrons behave as waves when passing through atoms, creating constructive and destructive interference patterns.</p>
                             </div>
                         </div>
                     </div>
                     <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
                         <div class="flip-card-inner">
                             <div class="flip-card-front text-center">
-                                <span class="text-blue-500 text-xs font-bold mb-2">LOG 03: WAVE EVIDENCE</span>
-                                <p class="text-sm font-bold">Does this prove electrons are waves?</p>
+                                <span class="text-blue-500 text-xs font-bold mb-2">LOG E3: APPLICATIONS</span>
+                                <p class="text-sm font-bold">Why use electron waves instead of light?</p>
                             </div>
                             <div class="flip-card-back">
-                                <p class="font-black mb-2">YES.</p>
-                                <p>Particles don't "diffract" or "interfere." Seeing rings/fringes is absolute proof of wave behavior.</p>
+                                <p class="font-black mb-2">HIGH RESOLUTION.</p>
+                                <p>Tiny electron wavelengths allow us to "see" things much smaller than visible light can resolve (Electron Microscopes).</p>
                             </div>
                         </div>
                     </div>
@@ -258,6 +259,8 @@
     </main>
 
     <script>
+        const H_EV_SCALE = 0.4136; 
+
         function switchTab(mode) {
             document.getElementById('view-photo').classList.toggle('hidden', mode !== 'photo');
             document.getElementById('view-duality').classList.toggle('hidden', mode !== 'duality');
@@ -269,29 +272,88 @@
         const photoArena = document.getElementById('photo-arena');
         const fIn = document.getElementById('fIn'), iIn = document.getElementById('iIn'), tIn = document.getElementById('tIn');
         let photonColor = '#fbbf24';
+
         function initElectrons() { for(let i=0; i<18; i++) { let e = document.createElement('div'); e.className='electron'; e.style.left=(55+Math.random()*40)+'%'; e.style.top=(15+Math.random()*70)+'%'; photoArena.appendChild(e); } }
         initElectrons();
+
         function setPhotoColor(f, c) { fIn.value=f; photonColor=c; updatePhoto(); }
+
         const ctx = document.getElementById('quantumGraph').getContext('2d');
-        let chart = new Chart(ctx, { type:'line', data:{datasets:[{data:[],borderColor:'#3b82f6',borderWidth:4,pointRadius:0,fill:true,backgroundColor:'rgba(59,130,246,0.05)'},{data:[],backgroundColor:'#fbbf24',pointRadius:10,showLine:false}]}, options:{responsive:true,maintainAspectRatio:false,scales:{y:{min:-120,max:120},x:{type:'linear',min:0,max:150}},plugins:{legend:{display:false}}}});
+        let chart = new Chart(ctx, { 
+            type:'line', 
+            data:{
+                datasets:[{
+                    label: 'Theoretical Line',
+                    data:[],borderColor:'#3b82f6',borderWidth:3,pointRadius:0,fill:true,backgroundColor:'rgba(59,130,246,0.05)'
+                },{
+                    label: 'Current Observation',
+                    data:[],backgroundColor:'#fbbf24',pointRadius:8,showLine:false
+                }]
+            }, 
+            options:{
+                responsive:true,
+                maintainAspectRatio:false,
+                scales:{
+                    y:{
+                        min:-6, max:6,
+                        title: { display: true, text: 'Max Kinetic Energy (eV)', color: '#94a3b8', font: { weight: 'bold' } },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    },
+                    x:{
+                        type:'linear', min:0, max:20,
+                        title: { display: true, text: 'Frequency (10¹⁴ Hz)', color: '#94a3b8', font: { weight: 'bold' } },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    }
+                },
+                plugins:{legend:{display:false}}
+            }
+        });
+
         function updatePhoto() {
-            const f=parseInt(fIn.value), t=parseInt(tIn.value), i=parseInt(iIn.value);
-            document.getElementById('fOut').innerText=f; document.getElementById('tOut').innerText=t; document.getElementById('iOut').innerText=i;
-            chart.data.datasets[0].data=[{x:0,y:-t},{x:150,y:150-t}]; chart.data.datasets[1].data=[{x:f,y:f-t}]; chart.data.datasets[1].backgroundColor=photonColor; chart.update('none');
+            const f=parseFloat(fIn.value), t=parseFloat(tIn.value), i=parseInt(iIn.value);
+            document.getElementById('fOut').innerText=f; 
+            document.getElementById('tOut').innerText=t; 
+            document.getElementById('iOut').innerText=i;
+            const kmax = (H_EV_SCALE * f) - t;
+            chart.data.datasets[0].data=[{x:0,y:-t},{x:20,y:(H_EV_SCALE*20)-t}]; 
+            chart.data.datasets[1].data=[{x:f,y:kmax}]; 
+            chart.data.datasets[1].backgroundColor=photonColor; 
+            chart.update('none');
             const status = document.getElementById('statusIndicator');
-            status.innerText = f<t?"No Emission":"Emission Active";
-            status.className = f<t?"text-[10px] bg-red-500/20 text-red-400 px-2 py-1 rounded border border-red-500/20 font-mono tracking-widest uppercase":"text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20 font-mono tracking-widest uppercase";
+            const isEmitting = (H_EV_SCALE * f) > t;
+            status.innerText = !isEmitting ? "No Emission" : "Emission Active";
+            status.className = !isEmitting ? 
+                "text-[10px] bg-red-500/20 text-red-400 px-2 py-1 rounded border border-red-500/20 font-mono tracking-widest uppercase" : 
+                "text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20 font-mono tracking-widest uppercase";
         }
         updatePhoto();
+
         function firePhotons() {
-            const f=parseInt(fIn.value), t=parseInt(tIn.value), intensity=parseInt(iIn.value);
+            const f=parseFloat(fIn.value), t=parseFloat(tIn.value), intensity=parseInt(iIn.value);
+            const isEmitting = (H_EV_SCALE * f) > t;
             for(let i=0; i<intensity; i++) {
                 setTimeout(() => {
                     const p=document.createElement('div'); p.className='photon'; p.style.background=photonColor; p.style.top=(10+Math.random()*80)+'%'; photoArena.appendChild(p);
-                    const anim=p.animate([{left:'-20px'},{left:'110%'}], {duration:1200-(f*5)});
+                    const anim=p.animate([{left:'-20px'},{left:'110%'}], {duration:1200-(f*40)});
                     anim.onfinish=()=>p.remove();
-                    setTimeout(()=> { if(f>=t){ const es=document.querySelectorAll('.electron'); const target=es[Math.floor(Math.random()*es.length)]; if(target && target.style.opacity!=='0'){target.style.transform='translateX(600px)';target.style.opacity='0';setTimeout(()=>{target.style.transform='none';target.style.opacity='1';},2000);}} }, (1200-(f*5))*0.5);
-                }, i*50);
+                    setTimeout(()=> { 
+                        if(isEmitting){ 
+                            const es=document.querySelectorAll('.electron'); 
+                            const target=es[Math.floor(Math.random()*es.length)]; 
+                            if(target && target.style.opacity!=='0'){
+                                const speed = 0.4 + ((H_EV_SCALE * f) - t) * 0.2;
+                                target.style.transition = `transform ${0.8/speed}s linear, opacity 0.3s`;
+                                target.style.transform='translateX(600px)';
+                                target.style.opacity='0';
+                                setTimeout(()=>{
+                                    target.style.transition = 'none';
+                                    target.style.transform='none';
+                                    target.style.opacity='1';
+                                },2000);
+                            }
+                        } 
+                    }, (1200-(f*40))*0.5);
+                }, i*80);
             }
         }
 
@@ -299,7 +361,14 @@
             const lambda = parseFloat(document.getElementById('waveLen').value);
             const d = parseFloat(document.getElementById('slitSep').value);
             const D = parseFloat(document.getElementById('distD').value);
+            
+            // Update labels
+            document.getElementById('waveLenOut').innerText = lambda + " nm";
+            document.getElementById('distDOut').innerText = D + " cm";
+            document.getElementById('slitSepOut').innerText = d + " mm";
+
             const screen = document.getElementById('slit-screen');
+            if(!screen) return;
             screen.innerHTML = '';
             const color = `hsl(${(1 - (lambda - 400) / 300) * 240}, 100%, 50%)`;
             const spacing = (lambda / 450) * (D / 15) * (1 / d) * 1.2;
@@ -339,7 +408,7 @@
                 }, i * 20);
             }
         }
-        function clearElectronScreen() { eScreen.innerHTML = ''; }
+        function clearElectronScreen() { if(eScreen) eScreen.innerHTML = ''; }
     </script>
 </body>
 </html>
